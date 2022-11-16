@@ -9,7 +9,6 @@ environment:
 
 dependencies:
   ffi: ^2.0.1
-  ffigen: ^7.2.0
   flutter:
     sdk: flutter
   plugin_platform_interface: ^2.0.2
@@ -18,6 +17,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  ffigen: ^7.2.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -39,14 +39,19 @@ flutter:
       android:
         package: com.example.visl_lib_dart
         pluginClass: VislLibDartPlugin
+        ffiPlugin: true
       ios:
         pluginClass: VislLibDartPlugin
+        ffiPlugin: true
       linux:
         pluginClass: VislLibDartPlugin
+        ffiPlugin: true
       macos:
         pluginClass: VislLibDartPlugin
+        ffiPlugin: true
       windows:
         pluginClass: VislLibDartPluginCApi
+        ffiPlugin: true
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:
@@ -78,3 +83,5 @@ flutter:
   #
   # For details regarding fonts in packages, see
   # https://flutter.dev/custom-fonts/#from-packages
+
+  

@@ -40,6 +40,12 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
     }
 
+    externalNativeBuild {
+        cmake {
+            path "../include/CMakeLists.txt"
+        }
+    }
+
     defaultConfig {
         minSdkVersion 16
     }

@@ -1,0 +1,38 @@
+# Just for the sake of easy lib inclusion in CMake based projects
+# Not for use in **Arduino** projects!
+
+cmake_minimum_required(VERSION 3.4.1)
+
+project(VISL VERSION 0.0.1 LANGUAGES CXX C)
+
+set(VIS_SOURCE_DIR "../include/src")
+
+file(GLOB_RECURSE VIS_SOURCES
+        "${VIS_SOURCE_DIR}/*.h"
+        "${VIS_SOURCE_DIR}/*.cpp")
+        
+list(FILTER VIS_SOURCES EXCLUDE REGEX "^[VIS-]")
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+# set(VISL_TEST_PROGRAM OFF)
+
+add_library(VISL SHARED ${VIS_SOURCES})
+# set_target_properties(VISL PROPERTIES
+#         LIBRARY_OUTPUT_DIRECTORY_DEBUG "${PROJECT_SOURCE_DIR}/lib"
+#         LIBRARY_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/lib"
+#         RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/bin"
+#         RUNTIME_OUTPUT_DIRECTORY_DEBUG "${PROJECT_SOURCE_DIR}/bin"
+#         ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/lib"
+#         ARCHIVE_OUTPUT_DIRECTORY_DEBUG "${PROJECT_SOURCE_DIR}/lib"
+# )
+target_include_directories(VISL PUBLIC "${VIS_SOURCE_DIR}")
+
+# if(VISL_TEST_PROGRAM)
+# add_executable(visl-test "test/main.cpp")
+# target_include_directories(visl-test PUBLIC "${VIS_SOURCE_DIR}")
+# target_link_libraries(visl-test VISL)
+# target_compile_options(visl-test PRIVATE -g)
+# endif()
+
